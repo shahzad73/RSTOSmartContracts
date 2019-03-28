@@ -1,0 +1,674 @@
+{
+  "contractName": "RegulatorService",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_token",
+          "type": "address"
+        },
+        {
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "check",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "/**\n   Copyright (c) 2017 Harbor Platform, Inc.\n\n   Licensed under the Apache License, Version 2.0 (the “License”);\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n   http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an “AS IS” BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n*/\n\npragma solidity ^0.5.0;  \n\nimport \"openzeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n\n/// @notice Standard interface for `RegulatorService`s\ncontract RegulatorService is Ownable {\n\n  /*\n   * @notice This method *MUST* be called by `RegulatedToken`s during `transfer()` and `transferFrom()`.\n   *         The implementation *SHOULD* check whether or not a transfer can be approved.\n   *\n   * @dev    This method *MAY* call back to the token contract specified by `_token` for\n   *         more information needed to enforce trade approval.\n   *\n   * @param  _token The address of the token to be transfered\n   * @param  _spender The address of the spender of the token\n   * @param  _from The address of the sender account\n   * @param  _to The address of the receiver account\n   * @param  _amount The quantity of the token to trade\n   *\n   * @return uint8 The reason code: 0 means success.  Non-zero values are left to the implementation\n   *               to assign meaning.\n   */\n  function check(address _token, address _spender, address _from, address _to, uint256 _amount) public returns (uint8);\n}\n",
+  "sourcePath": "F:\\Projects\\work\\GS\\blockchain\\contracts\\RegulatorService.sol",
+  "ast": {
+    "absolutePath": "/F/Projects/work/GS/blockchain/contracts/RegulatorService.sol",
+    "exportedSymbols": {
+      "RegulatorService": [
+        370
+      ]
+    },
+    "id": 371,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 351,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "608:23:4"
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "file": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "id": 352,
+        "nodeType": "ImportDirective",
+        "scope": 371,
+        "sourceUnit": 922,
+        "src": "635:63:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 353,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 921,
+              "src": "785:7:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$921",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 354,
+            "nodeType": "InheritanceSpecifier",
+            "src": "785:7:4"
+          }
+        ],
+        "contractDependencies": [
+          921
+        ],
+        "contractKind": "contract",
+        "documentation": "@notice Standard interface for `RegulatorService`s",
+        "fullyImplemented": false,
+        "id": 370,
+        "linearizedBaseContracts": [
+          370,
+          921
+        ],
+        "name": "RegulatorService",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 369,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "check",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 365,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 356,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1612:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 355,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1612:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 358,
+                  "name": "_spender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1628:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 357,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1628:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 360,
+                  "name": "_from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1646:13:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 359,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1646:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 362,
+                  "name": "_to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1661:11:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 361,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1661:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 364,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1674:15:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 363,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1674:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1611:79:4"
+            },
+            "returnParameters": {
+              "id": 368,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 367,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1707:5:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 366,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1707:5:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1706:7:4"
+            },
+            "scope": 370,
+            "src": "1597:117:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 371,
+        "src": "756:960:4"
+      }
+    ],
+    "src": "608:1109:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/F/Projects/work/GS/blockchain/contracts/RegulatorService.sol",
+    "exportedSymbols": {
+      "RegulatorService": [
+        370
+      ]
+    },
+    "id": 371,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 351,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "608:23:4"
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "file": "openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "id": 352,
+        "nodeType": "ImportDirective",
+        "scope": 371,
+        "sourceUnit": 922,
+        "src": "635:63:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 353,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 921,
+              "src": "785:7:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$921",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 354,
+            "nodeType": "InheritanceSpecifier",
+            "src": "785:7:4"
+          }
+        ],
+        "contractDependencies": [
+          921
+        ],
+        "contractKind": "contract",
+        "documentation": "@notice Standard interface for `RegulatorService`s",
+        "fullyImplemented": false,
+        "id": 370,
+        "linearizedBaseContracts": [
+          370,
+          921
+        ],
+        "name": "RegulatorService",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 369,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "check",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 365,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 356,
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1612:14:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 355,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1612:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 358,
+                  "name": "_spender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1628:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 357,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1628:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 360,
+                  "name": "_from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1646:13:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 359,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1646:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 362,
+                  "name": "_to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1661:11:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 361,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1661:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 364,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1674:15:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 363,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1674:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1611:79:4"
+            },
+            "returnParameters": {
+              "id": 368,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 367,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 369,
+                  "src": "1707:5:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  },
+                  "typeName": {
+                    "id": 366,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1707:5:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1706:7:4"
+            },
+            "scope": 370,
+            "src": "1597:117:4",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 371,
+        "src": "756:960:4"
+      }
+    ],
+    "src": "608:1109:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.1",
+  "updatedAt": "2019-03-17T17:13:20.506Z",
+  "devdoc": {
+    "methods": {
+      "isOwner()": {
+        "return": "true if `msg.sender` is the owner of the contract."
+      },
+      "owner()": {
+        "return": "the address of the owner."
+      },
+      "renounceOwnership()": {
+        "details": "Allows the current owner to relinquish control of the contract."
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "The address to transfer ownership to."
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "renounceOwnership()": {
+        "notice": "Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+      }
+    },
+    "notice": "Standard interface for `RegulatorService`s"
+  }
+}
