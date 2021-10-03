@@ -2,29 +2,54 @@
   "contractName": "ServiceRegistry",
   "abi": [
     {
-      "constant": false,
-      "inputs": [],
-      "name": "renounceOwnership",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x715018a6"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
+      "inputs": [
         {
-          "name": "",
+          "internalType": "address",
+          "name": "_service",
           "type": "address"
         }
       ],
       "payable": false,
-      "stateMutability": "view",
-      "type": "function",
-      "signature": "0x8da5cb5b"
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "oldService",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newService",
+          "type": "address"
+        }
+      ],
+      "name": "ReplaceService",
+      "type": "event"
     },
     {
       "constant": true,
@@ -32,14 +57,38 @@
       "name": "isOwner",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x8f32d59b"
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     },
     {
       "constant": true,
@@ -47,19 +96,20 @@
       "name": "service",
       "outputs": [
         {
+          "internalType": "address",
           "name": "",
           "type": "address"
         }
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xd598d4c9"
+      "type": "function"
     },
     {
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "newOwner",
           "type": "address"
         }
@@ -68,61 +118,13 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0xf2fde38b"
-    },
-    {
-      "inputs": [
-        {
-          "name": "_service",
-          "type": "address"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor",
-      "signature": "constructor"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "name": "oldService",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "name": "newService",
-          "type": "address"
-        }
-      ],
-      "name": "ReplaceService",
-      "type": "event",
-      "signature": "0xb9e3587fba8495ea4ca8cd7a6a3c79a137417d0033018bf09e7b0b5b38dce974"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "OwnershipTransferred",
-      "type": "event",
-      "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+      "type": "function"
     },
     {
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "_service",
           "type": "address"
         }
@@ -131,18 +133,18 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x0680d58a"
+      "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b5060405160208061076e8339810180604052602081101561003057600080fd5b8101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506106208061014e6000396000f3fe608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630680d58a1461007d578063715018a6146100ce5780638da5cb5b146100e55780638f32d59b1461013c578063d598d4c91461016b578063f2fde38b146101c2575b600080fd5b34801561008957600080fd5b506100cc600480360360208110156100a057600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610213565b005b3480156100da57600080fd5b506100e3610363565b005b3480156100f157600080fd5b506100fa610435565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561014857600080fd5b5061015161045e565b604051808215151515815260200191505060405180910390f35b34801561017757600080fd5b506101806104b5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156101ce57600080fd5b50610211600480360360208110156101e557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506104db565b005b61021b61045e565b151561022657600080fd5b806000813b905060008111151561023c57600080fd5b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905083600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055507fb9e3587fba8495ea4ca8cd7a6a3c79a137417d0033018bf09e7b0b5b38dce97481600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a150505050565b61036b61045e565b151561037657600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6104e361045e565b15156104ee57600080fd5b6104f7816104fa565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561053657600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820fbb08bf6e8d99750691e3326f76bd2ff7896f6be7c9b713452438775f266ebe40029",
-  "deployedBytecode": "0x608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630680d58a1461007d578063715018a6146100ce5780638da5cb5b146100e55780638f32d59b1461013c578063d598d4c91461016b578063f2fde38b146101c2575b600080fd5b34801561008957600080fd5b506100cc600480360360208110156100a057600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610213565b005b3480156100da57600080fd5b506100e3610363565b005b3480156100f157600080fd5b506100fa610435565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561014857600080fd5b5061015161045e565b604051808215151515815260200191505060405180910390f35b34801561017757600080fd5b506101806104b5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156101ce57600080fd5b50610211600480360360208110156101e557600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506104db565b005b61021b61045e565b151561022657600080fd5b806000813b905060008111151561023c57600080fd5b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905083600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055507fb9e3587fba8495ea4ca8cd7a6a3c79a137417d0033018bf09e7b0b5b38dce97481600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a150505050565b61036b61045e565b151561037657600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6104e361045e565b15156104ee57600080fd5b6104f7816104fa565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561053657600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820fbb08bf6e8d99750691e3326f76bd2ff7896f6be7c9b713452438775f266ebe40029",
-  "sourceMap": "792:1140:5:-;;;1451:68;8:9:-1;5:2;;;30:1;27;20:12;5:2;1451:68:5;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1451:68:5;;;;;;;;;;;;;;;;524:10:10;515:6;;:19;;;;;;;;;;;;;;;;;;582:6;;;;;;;;;;;549:40;;578:1;549:40;;;;;;;;;;;;1505:8:5;1495:7;;:18;;;;;;;;;;;;;;;;;;1451:68;792:1140;;;;;;",
-  "deployedSourceMap": "792:1140:5:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1739:191;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1739:191:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1739:191:5;;;;;;;;;;;;;;;;;;;;;;1347:137:10;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1347:137:10;;;;;;659:77;;8:9:-1;5:2;;;30:1;27;20:12;5:2;659:77:10;;;;;;;;;;;;;;;;;;;;;;;;;;;979:90;;8:9:-1;5:2;;;30:1;27;20:12;5:2;979:90:10;;;;;;;;;;;;;;;;;;;;;;;;;;;832:22:5;;8:9:-1;5:2;;;30:1;27;20:12;5:2;832:22:5;;;;;;;;;;;;;;;;;;;;;;;;;;;1655:107:10;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1655:107:10;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1655:107:10;;;;;;;;;;;;;;;;;;;;;;1739:191:5;863:9:10;:7;:9::i;:::-;855:18;;;;;;;;1804:8:5;1244:11;1294:5;1282:18;1272:28;;1324:1;1315:6;:10;1307:19;;;;;;;;1827:18;1848:7;;;;;;;;;;;1827:28;;1871:8;1861:7;;:18;;;;;;;;;;;;;;;;;;1890:35;1905:10;1917:7;;;;;;;;;;;1890:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1332:1;883::10;;1739:191:5;:::o;1347:137:10:-;863:9;:7;:9::i;:::-;855:18;;;;;;;;1445:1;1408:40;;1429:6;;;;;;;;;;;1408:40;;;;;;;;;;;;1475:1;1458:6;;:19;;;;;;;;;;;;;;;;;;1347:137::o;659:77::-;697:7;723:6;;;;;;;;;;;716:13;;659:77;:::o;979:90::-;1019:4;1056:6;;;;;;;;;;;1042:20;;:10;:20;;;1035:27;;979:90;:::o;832:22:5:-;;;;;;;;;;;;;:::o;1655:107:10:-;863:9;:7;:9::i;:::-;855:18;;;;;;;;1727:28;1746:8;1727:18;:28::i;:::-;1655:107;:::o;1906:183::-;1999:1;1979:22;;:8;:22;;;;1971:31;;;;;;;;2046:8;2017:38;;2038:6;;;;;;;;;;;2017:38;;;;;;;;;;;;2074:8;2065:6;;:17;;;;;;;;;;;;;;;;;;1906:183;:::o",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_service\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldService\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newService\",\"type\":\"address\"}],\"name\":\"ReplaceService\",\"type\":\"event\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_service\",\"type\":\"address\"}],\"name\":\"replaceService\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"service\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"constructor\":{\"params\":{\"_service\":\"The address of the `RegulatorService`   \"}},\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"replaceService(address)\":{\"details\":\"This method is only callable by the contract's owner\",\"params\":{\"_service\":\"The address of the new `RegulatorService`\"}},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"constructor\":\"Constructor\",\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"},\"replaceService(address)\":{\"notice\":\"Replaces the address pointer to the `RegulatorService`\"}},\"notice\":\"A service that points to a `RegulatorService`\"}},\"settings\":{\"compilationTarget\":{\"/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/ServiceRegistry.sol\":\"ServiceRegistry\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/RegulatorService.sol\":{\"keccak256\":\"0x0fe447f9b297ea3abb7365531a8e65d52a28727f162627d00fd1b7ea4c685723\",\"urls\":[\"bzz-raw://06960fb8859e5c1fe125b8bbe585e362da4cee19f6786ed866663ff7ffc6e4f1\",\"dweb:/ipfs/QmRySEHKPaGnkjQSoXgwXDmHH6jPeQKxTQtr95zW1rPfY8\"]},\"/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/ServiceRegistry.sol\":{\"keccak256\":\"0x3b9deab02a4dcbe528dce8e73a0672f87b3096449459e6a7541e58ff6c74c0d6\",\"urls\":[\"bzz-raw://084a17e4d0ae5f113d5fb3d153c255fd514c8543466c4ce4c625c949463fd768\",\"dweb:/ipfs/QmYwWBtp3GpQ65YiLMphYU2LAY9oUg5vuwWhtXGjgABmGn\"]},\"openzeppelin-solidity/contracts/ownership/Ownable.sol\":{\"keccak256\":\"0x980de387a1a020a498f53d00f89fecebb12c949a17e8f160093c0303ede2b786\",\"urls\":[\"bzz-raw://f07a2c393caa85f62f0aaa461e3edd50aa59371d4209778ba0558d7f8b4b856c\",\"dweb:/ipfs/QmeN3ZiYGSjCnQFeYaJNgoXjF9eDue1g3e9pqManRkeBtV\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161070c38038061070c8339818101604052602081101561003357600080fd5b8101908080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a380600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550506105bb806101516000396000f3fe608060405234801561001057600080fd5b50600436106100625760003560e01c80630680d58a14610067578063715018a6146100ab5780638da5cb5b146100b55780638f32d59b146100ff578063d598d4c914610121578063f2fde38b1461016b575b600080fd5b6100a96004803603602081101561007d57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101af565b005b6100b36102fb565b005b6100bd6103cb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101076103f4565b604051808215151515815260200191505060405180910390f35b61012961044b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101ad6004803603602081101561018157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610471565b005b6101b76103f4565b6101c057600080fd5b806000813b9050600081116101d457600080fd5b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905083600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055507fb9e3587fba8495ea4ca8cd7a6a3c79a137417d0033018bf09e7b0b5b38dce97481600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a150505050565b6103036103f4565b61030c57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6104796103f4565b61048257600080fd5b61048b8161048e565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614156104c857600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea265627a7a723158205498954f10a7f5817a4ac0e732413ef906ef14ceb564a3a8801cd2815b240a1f64736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100625760003560e01c80630680d58a14610067578063715018a6146100ab5780638da5cb5b146100b55780638f32d59b146100ff578063d598d4c914610121578063f2fde38b1461016b575b600080fd5b6100a96004803603602081101561007d57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506101af565b005b6100b36102fb565b005b6100bd6103cb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101076103f4565b604051808215151515815260200191505060405180910390f35b61012961044b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6101ad6004803603602081101561018157600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610471565b005b6101b76103f4565b6101c057600080fd5b806000813b9050600081116101d457600080fd5b6000600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905083600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055507fb9e3587fba8495ea4ca8cd7a6a3c79a137417d0033018bf09e7b0b5b38dce97481600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a150505050565b6103036103f4565b61030c57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6104796103f4565b61048257600080fd5b61048b8161048e565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614156104c857600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea265627a7a723158205498954f10a7f5817a4ac0e732413ef906ef14ceb564a3a8801cd2815b240a1f64736f6c63430005100032",
+  "sourceMap": "792:1140:5:-;;;1451:68;8:9:-1;5:2;;;30:1;27;20:12;5:2;1451:68:5;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1451:68:5;;;;;;;;;;;;;;;;524:10:10;515:6;;:19;;;;;;;;;;;;;;;;;;582:6;;;;;;;;;;;549:40;;578:1;549:40;;;;;;;;;;;;1505:8:5;1495:7;;:18;;;;;;;;;;;;;;;;;;1451:68;792:1140;;;;;;",
+  "deployedSourceMap": "792:1140:5:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;792:1140:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1739:191;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1739:191:5;;;;;;;;;;;;;;;;;;;:::i;:::-;;1347:137:10;;;:::i;:::-;;659:77;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;979:90;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;832:22:5;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1655:107:10;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1655:107:10;;;;;;;;;;;;;;;;;;;:::i;:::-;;1739:191:5;863:9:10;:7;:9::i;:::-;855:18;;;;;;1804:8:5;1244:11;1294:5;1282:18;1272:28;;1324:1;1315:6;:10;1307:19;;;;;;1827:18;1848:7;;;;;;;;;;;1827:28;;1871:8;1861:7;;:18;;;;;;;;;;;;;;;;;;1890:35;1905:10;1917:7;;;;;;;;;;;1890:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1332:1;883::10;;1739:191:5;:::o;1347:137:10:-;863:9;:7;:9::i;:::-;855:18;;;;;;1445:1;1408:40;;1429:6;;;;;;;;;;;1408:40;;;;;;;;;;;;1475:1;1458:6;;:19;;;;;;;;;;;;;;;;;;1347:137::o;659:77::-;697:7;723:6;;;;;;;;;;;716:13;;659:77;:::o;979:90::-;1019:4;1056:6;;;;;;;;;;;1042:20;;:10;:20;;;1035:27;;979:90;:::o;832:22:5:-;;;;;;;;;;;;;:::o;1655:107:10:-;863:9;:7;:9::i;:::-;855:18;;;;;;1727:28;1746:8;1727:18;:28::i;:::-;1655:107;:::o;1906:183::-;1999:1;1979:22;;:8;:22;;;;1971:31;;;;;;2046:8;2017:38;;2038:6;;;;;;;;;;;2017:38;;;;;;;;;;;;2074:8;2065:6;;:17;;;;;;;;;;;;;;;;;;1906:183;:::o",
   "source": "/**\n   Copyright (c) 2017 Harbor Platform, Inc.\n\n   Licensed under the Apache License, Version 2.0 (the “License”);\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n   http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an “AS IS” BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n*/\n\npragma solidity ^0.5.0;  \n\nimport './RegulatorService.sol';\nimport \"openzeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n\n/// @notice A service that points to a `RegulatorService`\ncontract ServiceRegistry is Ownable {\n  address public service;\n\n  /**\n   * @notice Triggered when service address is replaced\n   */\n  event ReplaceService(address oldService, address newService);\n\n  /**\n   * @dev Validate contract address\n   * Credit: https://github.com/Dexaran/ERC223-token-standard/blob/Recommended/ERC223_Token.sol#L107-L114\n   *\n   * @param _addr The address of a smart contract\n   */\n  modifier withContract(address _addr) {\n    uint length;\n    assembly { length := extcodesize(_addr) }\n    require(length > 0);\n    _;\n    }\n\n  /**\n   * @notice Constructor\n   *\n   * @param _service The address of the `RegulatorService`\n   *\n   */\n   constructor(address _service) public {\n     service = _service;\n   }\n\n  /**\n   * @notice Replaces the address pointer to the `RegulatorService`\n   *\n   * @dev This method is only callable by the contract's owner\n   *\n   * @param _service The address of the new `RegulatorService`\n   */\n  function replaceService(address _service) onlyOwner withContract(_service) public {\n    address oldService = service;\n    service = _service;\n    emit ReplaceService(oldService, service);\n  }\n}\n",
-  "sourcePath": "F:\\Projects\\work\\GS\\blockchain\\contracts\\ServiceRegistry.sol",
+  "sourcePath": "/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/ServiceRegistry.sol",
   "ast": {
-    "absolutePath": "/F/Projects/work/GS/blockchain/contracts/ServiceRegistry.sol",
+    "absolutePath": "/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/ServiceRegistry.sol",
     "exportedSymbols": {
       "ServiceRegistry": [
         435
@@ -163,7 +165,7 @@
         "src": "608:23:5"
       },
       {
-        "absolutePath": "/F/Projects/work/GS/blockchain/contracts/RegulatorService.sol",
+        "absolutePath": "/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/RegulatorService.sol",
         "file": "./RegulatorService.sol",
         "id": 373,
         "nodeType": "ImportDirective",
@@ -363,15 +365,6 @@
                 {
                   "externalReferences": [
                     {
-                      "_addr": {
-                        "declaration": 386,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "1294:5:5",
-                        "valueSize": 1
-                      }
-                    },
-                    {
                       "length": {
                         "declaration": 389,
                         "isOffset": false,
@@ -379,12 +372,21 @@
                         "src": "1272:6:5",
                         "valueSize": 1
                       }
+                    },
+                    {
+                      "_addr": {
+                        "declaration": 386,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1294:5:5",
+                        "valueSize": 1
+                      }
                     }
                   ],
                   "id": 391,
                   "nodeType": "InlineAssembly",
-                  "operations": "{\n    length := extcodesize(_addr)\n}",
-                  "src": "1261:53:5"
+                  "operations": "{ length := extcodesize(_addr) }",
+                  "src": "1261:41:5"
                 },
                 {
                   "expression": {
@@ -924,7 +926,7 @@
     "src": "608:1325:5"
   },
   "legacyAST": {
-    "absolutePath": "/F/Projects/work/GS/blockchain/contracts/ServiceRegistry.sol",
+    "absolutePath": "/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/ServiceRegistry.sol",
     "exportedSymbols": {
       "ServiceRegistry": [
         435
@@ -945,7 +947,7 @@
         "src": "608:23:5"
       },
       {
-        "absolutePath": "/F/Projects/work/GS/blockchain/contracts/RegulatorService.sol",
+        "absolutePath": "/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/RegulatorService.sol",
         "file": "./RegulatorService.sol",
         "id": 373,
         "nodeType": "ImportDirective",
@@ -1145,15 +1147,6 @@
                 {
                   "externalReferences": [
                     {
-                      "_addr": {
-                        "declaration": 386,
-                        "isOffset": false,
-                        "isSlot": false,
-                        "src": "1294:5:5",
-                        "valueSize": 1
-                      }
-                    },
-                    {
                       "length": {
                         "declaration": 389,
                         "isOffset": false,
@@ -1161,12 +1154,21 @@
                         "src": "1272:6:5",
                         "valueSize": 1
                       }
+                    },
+                    {
+                      "_addr": {
+                        "declaration": 386,
+                        "isOffset": false,
+                        "isSlot": false,
+                        "src": "1294:5:5",
+                        "valueSize": 1
+                      }
                     }
                   ],
                   "id": 391,
                   "nodeType": "InlineAssembly",
-                  "operations": "{\n    length := extcodesize(_addr)\n}",
-                  "src": "1261:53:5"
+                  "operations": "{ length := extcodesize(_addr) }",
+                  "src": "1261:41:5"
                 },
                 {
                   "expression": {
@@ -1707,7 +1709,7 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {
     "3": {
@@ -1727,8 +1729,7 @@
             }
           ],
           "name": "ReplaceService",
-          "type": "event",
-          "signature": "0xb9e3587fba8495ea4ca8cd7a6a3c79a137417d0033018bf09e7b0b5b38dce974"
+          "type": "event"
         },
         "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
           "anonymous": false,
@@ -1745,13 +1746,57 @@
             }
           ],
           "name": "OwnershipTransferred",
-          "type": "event",
-          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+          "type": "event"
         }
       },
       "links": {},
       "address": "0x4596ED2D0Ea77f349C67074B2EAF6B457FdE1E3A",
       "transactionHash": "0x975844b0d28acd230f91fbef3d44d6ee844781cde5c8689bfd90f57e602c4235"
+    },
+    "42": {
+      "events": {
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0xb9e3587fba8495ea4ca8cd7a6a3c79a137417d0033018bf09e7b0b5b38dce974": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "oldService",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "newService",
+              "type": "address"
+            }
+          ],
+          "name": "ReplaceService",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xBDf2F7c4CcaC9981c74d708F8BbfFDD04A8754cb",
+      "transactionHash": "0xa2891849be590b3f0906b826b7b4fb236eec4b47232e9def448dbdd01c45fbe2"
     },
     "5777": {
       "events": {
@@ -1761,17 +1806,18 @@
             {
               "indexed": false,
               "name": "oldService",
-              "type": "address"
+              "type": "address",
+              "internalType": "address"
             },
             {
               "indexed": false,
               "name": "newService",
-              "type": "address"
+              "type": "address",
+              "internalType": "address"
             }
           ],
           "name": "ReplaceService",
-          "type": "event",
-          "signature": "0xb9e3587fba8495ea4ca8cd7a6a3c79a137417d0033018bf09e7b0b5b38dce974"
+          "type": "event"
         },
         "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
           "anonymous": false,
@@ -1779,26 +1825,28 @@
             {
               "indexed": true,
               "name": "previousOwner",
-              "type": "address"
+              "type": "address",
+              "internalType": "address"
             },
             {
               "indexed": true,
               "name": "newOwner",
-              "type": "address"
+              "type": "address",
+              "internalType": "address"
             }
           ],
           "name": "OwnershipTransferred",
-          "type": "event",
-          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+          "type": "event"
         }
       },
       "links": {},
-      "address": "0x46bd81b4A21AB2a1D7752b3cFDc878a75dfD3B03",
-      "transactionHash": "0xf43ad3ba850f418dc35d135e266d8f6b7b45103e62c3a26218d261a6dd929e22"
+      "address": "0xD23Bb96DB99E1A9dE5B2F81AC7Ac68c2F9d8Add3",
+      "transactionHash": "0x89f9411e6c7b9405a02c206d472cfad0c7df9c3bcd1b61c3c8529371e487eb9e"
     }
   },
-  "schemaVersion": "3.0.1",
-  "updatedAt": "2019-03-17T17:13:21.776Z",
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-08-14T10:28:54.841Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {
       "constructor": {

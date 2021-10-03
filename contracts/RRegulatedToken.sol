@@ -33,10 +33,10 @@ contract RRegulatedToken is RegulatedToken {
 
   constructor(ServiceRegistry _registry) RegulatedToken(_registry) public
   {
-		  symbol = "DIGI";  
-		  name = "DigiShares";  
-		  decimals = 0;  
-		  totalSupplyToken = 100000;
+		  symbol = "USDC";  
+		  name = "USDC";  
+		  decimals = 18;
+		  totalSupplyToken = 200000000000000000000000;
 
 		  _mint(msg.sender, totalSupplyToken);  
 

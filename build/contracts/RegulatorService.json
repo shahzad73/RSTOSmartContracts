@@ -2,27 +2,23 @@
   "contractName": "RegulatorService",
   "abi": [
     {
-      "constant": false,
-      "inputs": [],
-      "name": "renounceOwnership",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
+      "anonymous": false,
+      "inputs": [
         {
-          "name": "",
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
           "type": "address"
         }
       ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
+      "name": "OwnershipTransferred",
+      "type": "event"
     },
     {
       "constant": true,
@@ -30,6 +26,7 @@
       "name": "isOwner",
       "outputs": [
         {
+          "internalType": "bool",
           "name": "",
           "type": "bool"
         }
@@ -39,9 +36,34 @@
       "type": "function"
     },
     {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "newOwner",
           "type": "address"
         }
@@ -53,42 +75,30 @@
       "type": "function"
     },
     {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "OwnershipTransferred",
-      "type": "event"
-    },
-    {
       "constant": false,
       "inputs": [
         {
+          "internalType": "address",
           "name": "_token",
           "type": "address"
         },
         {
+          "internalType": "address",
           "name": "_spender",
           "type": "address"
         },
         {
+          "internalType": "address",
           "name": "_from",
           "type": "address"
         },
         {
+          "internalType": "address",
           "name": "_to",
           "type": "address"
         },
         {
+          "internalType": "uint256",
           "name": "_amount",
           "type": "uint256"
         }
@@ -96,6 +106,7 @@
       "name": "check",
       "outputs": [
         {
+          "internalType": "uint8",
           "name": "",
           "type": "uint8"
         }
@@ -105,14 +116,15 @@
       "type": "function"
     }
   ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"check\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}},\"notice\":\"Standard interface for `RegulatorService`s\"}},\"settings\":{\"compilationTarget\":{\"/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/RegulatorService.sol\":\"RegulatorService\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/RegulatorService.sol\":{\"keccak256\":\"0x0fe447f9b297ea3abb7365531a8e65d52a28727f162627d00fd1b7ea4c685723\",\"urls\":[\"bzz-raw://06960fb8859e5c1fe125b8bbe585e362da4cee19f6786ed866663ff7ffc6e4f1\",\"dweb:/ipfs/QmRySEHKPaGnkjQSoXgwXDmHH6jPeQKxTQtr95zW1rPfY8\"]},\"openzeppelin-solidity/contracts/ownership/Ownable.sol\":{\"keccak256\":\"0x980de387a1a020a498f53d00f89fecebb12c949a17e8f160093c0303ede2b786\",\"urls\":[\"bzz-raw://f07a2c393caa85f62f0aaa461e3edd50aa59371d4209778ba0558d7f8b4b856c\",\"dweb:/ipfs/QmeN3ZiYGSjCnQFeYaJNgoXjF9eDue1g3e9pqManRkeBtV\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "/**\n   Copyright (c) 2017 Harbor Platform, Inc.\n\n   Licensed under the Apache License, Version 2.0 (the “License”);\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n   http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an “AS IS” BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n*/\n\npragma solidity ^0.5.0;  \n\nimport \"openzeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n\n/// @notice Standard interface for `RegulatorService`s\ncontract RegulatorService is Ownable {\n\n  /*\n   * @notice This method *MUST* be called by `RegulatedToken`s during `transfer()` and `transferFrom()`.\n   *         The implementation *SHOULD* check whether or not a transfer can be approved.\n   *\n   * @dev    This method *MAY* call back to the token contract specified by `_token` for\n   *         more information needed to enforce trade approval.\n   *\n   * @param  _token The address of the token to be transfered\n   * @param  _spender The address of the spender of the token\n   * @param  _from The address of the sender account\n   * @param  _to The address of the receiver account\n   * @param  _amount The quantity of the token to trade\n   *\n   * @return uint8 The reason code: 0 means success.  Non-zero values are left to the implementation\n   *               to assign meaning.\n   */\n  function check(address _token, address _spender, address _from, address _to, uint256 _amount) public returns (uint8);\n}\n",
-  "sourcePath": "F:\\Projects\\work\\GS\\blockchain\\contracts\\RegulatorService.sol",
+  "sourcePath": "/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/RegulatorService.sol",
   "ast": {
-    "absolutePath": "/F/Projects/work/GS/blockchain/contracts/RegulatorService.sol",
+    "absolutePath": "/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/RegulatorService.sol",
     "exportedSymbols": {
       "RegulatorService": [
         370
@@ -375,7 +387,7 @@
     "src": "608:1109:4"
   },
   "legacyAST": {
-    "absolutePath": "/F/Projects/work/GS/blockchain/contracts/RegulatorService.sol",
+    "absolutePath": "/home/shahzad/Shahzad/projects/git/RSTOSmartContracts/contracts/RegulatorService.sol",
     "exportedSymbols": {
       "RegulatorService": [
         370
@@ -639,11 +651,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.1",
-  "updatedAt": "2019-03-17T17:13:20.506Z",
+  "schemaVersion": "3.2.3",
+  "updatedAt": "2020-10-30T18:46:33.280Z",
   "devdoc": {
     "methods": {
       "isOwner()": {
